@@ -1,3 +1,1 @@
-const Actions = {
-    MINE_DIAMOND: "MINE_DIAMOND"
-};
+export const MINE_DIAMOND = "MINE_DIAMOND";
