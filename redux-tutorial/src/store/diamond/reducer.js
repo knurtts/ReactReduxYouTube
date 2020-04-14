@@ -2,7 +2,10 @@
 import * as Actions from './actionTypes';
 
 const initalState = {
-    diamonds: 0
+    diamonds: 0,
+    loading: false,
+    error: null,
+    names:[]
 }
 
 const diamondReducer = (state = initalState, action) => {
@@ -11,7 +14,28 @@ const diamondReducer = (state = initalState, action) => {
             return {
                 ...state,
                 diamonds: action.payload
-            }
+            };
+        
+        case Actions.FETCH_DATA:
+            return {
+                ...state,
+                loading: true
+            };
+        
+        case Actions.SUCCESS_DATA:
+            return {
+                ...state,
+                loading: false,
+                names: action.payload
+            };
+
+        case Actions.FAILED_DATA:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            };
+       
         default:
             return state;
     }
